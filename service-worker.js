@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
 
 importScripts(
-  "/juomamaatti/precache-manifest.a251acb30097b72e61bfdb6c7e9dbe47.js"
+  "/juomamaatti-react/precache-manifest.0063027d940659a2aa978da7e8718e91.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/juomamaatti/index.html", {
+workbox.routing.registerNavigationRoute("/juomamaatti-react/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });

@@ -1,14 +1,14 @@
 {
-  "main.css": "/juomamaatti/static/css/main.c5d84f35.chunk.css",
-  "main.js": "/juomamaatti/static/js/main.7d745104.chunk.js",
-  "main.js.map": "/juomamaatti/static/js/main.7d745104.chunk.js.map",
-  "static/js/1.6105a37c.chunk.js": "/juomamaatti/static/js/1.6105a37c.chunk.js",
-  "static/js/1.6105a37c.chunk.js.map": "/juomamaatti/static/js/1.6105a37c.chunk.js.map",
-  "runtime~main.js": "/juomamaatti/static/js/runtime~main.ccc6d6c0.js",
-  "runtime~main.js.map": "/juomamaatti/static/js/runtime~main.ccc6d6c0.js.map",
-  "static/media/logo.svg": "/juomamaatti/static/media/logo.5d5d9eef.svg",
-  "static/css/main.c5d84f35.chunk.css.map": "/juomamaatti/static/css/main.c5d84f35.chunk.css.map",
-  "index.html": "/juomamaatti/index.html",
-  "precache-manifest.a251acb30097b72e61bfdb6c7e9dbe47.js": "/juomamaatti/precache-manifest.a251acb30097b72e61bfdb6c7e9dbe47.js",
-  "service-worker.js": "/juomamaatti/service-worker.js"
+  "main.css": "/juomamaatti-react/static/css/main.c5d84f35.chunk.css",
+  "main.js": "/juomamaatti-react/static/js/main.a095b6dd.chunk.js",
+  "main.js.map": "/juomamaatti-react/static/js/main.a095b6dd.chunk.js.map",
+  "static/js/1.6105a37c.chunk.js": "/juomamaatti-react/static/js/1.6105a37c.chunk.js",
+  "static/js/1.6105a37c.chunk.js.map": "/juomamaatti-react/static/js/1.6105a37c.chunk.js.map",
+  "runtime~main.js": "/juomamaatti-react/static/js/runtime~main.d7f5e3e5.js",
+  "runtime~main.js.map": "/juomamaatti-react/static/js/runtime~main.d7f5e3e5.js.map",
+  "static/media/logo.svg": "/juomamaatti-react/static/media/logo.5d5d9eef.svg",
+  "static/css/main.c5d84f35.chunk.css.map": "/juomamaatti-react/static/css/main.c5d84f35.chunk.css.map",
+  "index.html": "/juomamaatti-react/index.html",
+  "precache-manifest.0063027d940659a2aa978da7e8718e91.js": "/juomamaatti-react/precache-manifest.0063027d940659a2aa978da7e8718e91.js",
+  "service-worker.js": "/juomamaatti-react/service-worker.js"
 }
