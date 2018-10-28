@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
 
 importScripts(
-  "/juomamaatti-react/precache-manifest.0063027d940659a2aa978da7e8718e91.js"
+  "/juomamaatti-react/precache-manifest.616361daa18c6cbe22310252cf60d9d9.js"
 );
 
 workbox.clientsClaim();
