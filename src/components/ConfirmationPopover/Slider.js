@@ -23,8 +23,8 @@ Slider.propTypes = {
   currentPos: PropTypes.number
 };
 
-const calculatePosition = (startPos, currentPos) => {
-  const pos = currentPos - startPos;
+const calculatePosition = (props) => {
+  const pos = props.currentPos - props.startPos;
 
   // clamp between 0 and 220px
   if (pos <= 0)
@@ -43,7 +43,7 @@ const SliderWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: ${props => calculatePosition(props.startPos, props.currentPos)}
+  transform: translate3d(${props => calculatePosition(props)},0,0);
   transition: margin 80ms;
 `;
 
