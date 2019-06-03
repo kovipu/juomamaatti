@@ -1,40 +1,29 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, {keyframes} from 'styled-components';
 import Close from 'react-feather/dist/icons/x';
 
 import Slider from './SliderContainer';
 
-class ConfirmationPopover extends Component {
-  state = {
-    swipePos: 0
-  };
+const ConfirmationPopover = ({ drink, onConfirm, onHide }) => {
+  return (
+    <ModalWrapper>
 
-  render() {
-    const handleConfirm = () => {
-      // TODO: Laita toimimaan
-      console.log('Juoma tilattu!');
-      this.props.onHide();
-    };
+      <TitleBarWrapper>
+        <CloseButtonWrapper onClick={onHide}>
+          <Close size={28}/>
+        </CloseButtonWrapper>
+      </TitleBarWrapper>
 
-    return (
-      <ModalWrapper>
+      <ModalTextWrapper>
+        Tilataanko <strong>{drink.name}</strong>?
+      </ModalTextWrapper>
 
-        <TitleBarWrapper>
-          <CloseButtonWrapper onClick={this.props.onHide}>
-            <Close size={28}/>
-          </CloseButtonWrapper>
-        </TitleBarWrapper>
 
-        <ModalTextWrapper>
-          Tilataanko <strong>{this.props.drink.name}</strong>?
-        </ModalTextWrapper>
-
-        <Slider onConfirm={handleConfirm}/>
-      </ModalWrapper>
-    )
-  }
-}
+      <Slider onConfirm={onConfirm}/>
+    </ModalWrapper>
+  )
+};
 
 ConfirmationPopover.propTypes = {
   drink: PropTypes.object,

@@ -21,6 +21,7 @@ const App = () => {
   const dialog = selected && (
       <ConfirmationPopover
         drink={selected}
+        onConfirm={() => dispatch({ type: 'order-drink', drink: selected })}
         onHide={() => dispatch({ type: 'close-dialog' })}
       />
     );

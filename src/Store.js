@@ -11,6 +11,10 @@ function reducer(state, action) {
       return { ...state, selected: action.drink };
     case 'close-dialog':
       return { ...state, selected: null };
+    case 'order-drink':
+      // TODO: make this actually do something
+      console.log(`Ordered drink ${action.drink.name}`);
+      return { ...state, selected: null };
     default:
       throw new Error('Unexpected action');
   }
