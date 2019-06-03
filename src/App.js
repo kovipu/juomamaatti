@@ -1,69 +1,57 @@
-import React, {Component} from 'react';
-import styled, {injectGlobal} from 'styled-components';
+import React, { useReducer, useEffect } from 'react';
+import styled, { injectGlobal } from 'styled-components';
 
+import { initialState, reducer } from './Store';
 import Drink from './components/Drink';
-import ConfirmationPopover from "./components/ConfirmationPopover";
+import ConfirmationPopover from './components/ConfirmationPopover';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+const callApi = async () => {
+  const response = await fetch('/api/drinks');
+  const body = await response.json();
 
-    this.state = {
-      drinks: [],
-      dialog: null
-    };
+  if (response.status !== 200) throw Error(body.message);
 
-    this.handleClick = this.handleClick.bind(this);
-  }
+  return body;
+};
 
-  componentDidMount() {
-    this.callApi()
-      .then(({ drinks }) => this.setState({ drinks }))
-      .catch(err => console.log(err));
-  }
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { drinks, selected } = state;
 
-  callApi = async () => {
-    const response = await fetch('/api/drinks');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-  };
-
-  handleClick(drink) {
-    const onHide = () => this.setState({ dialog: null });
-    const dialog = (
+  const dialog = selected && (
       <ConfirmationPopover
-        drink={drink}
-        onHide={onHide}
+        drink={selected}
+        onHide={() => dispatch({ type: 'close-dialog' })}
       />
     );
-    this.setState({ dialog });
-  }
 
-  render() {
-    return (
-      <AppWrapper>
-        <HeaderWrapper>Digit 20v</HeaderWrapper>
-        <DrinksWrapper>
-          {
-            this.state.drinks.length > 0
-              ? this.state.drinks.map(drink => (
-                <Drink
-                  key={drink.name}
-                  drink={drink}
-                  onClick={() => this.handleClick(drink)}
-                />
-              ))
-              : <p>Ladataan juomia...</p>
-          }
-        </DrinksWrapper>
-        {this.state.dialog}
-      </AppWrapper>
-    );
-  }
-}
+  // load drinks from api
+  useEffect(() => {
+    callApi()
+      .then(({ drinks }) => dispatch({ type: 'api-response', drinks }))
+      .catch(err => console.error(err))
+    }, []);
+
+  return (
+    <AppWrapper>
+      <HeaderWrapper>Digit 20v</HeaderWrapper>
+      <DrinksWrapper>
+        {
+          drinks.length > 0
+            ? drinks.map(drink => (
+              <Drink
+                key={drink.name}
+                drink={drink}
+                onClick={() => dispatch({ type: 'select', drink })}
+              />
+            ))
+            : <p>Ladataan juomia...</p>
+        }
+      </DrinksWrapper>
+      {dialog}
+    </AppWrapper>
+  );
+};
 
 injectGlobal`
   body {
