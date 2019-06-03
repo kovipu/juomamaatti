@@ -1,45 +1,46 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Slider from './Slider';
 
-class SliderContainer extends Component {
-  state = {
+const SliderContainer = ({ onConfirm }) => {
+  const [state, setState] = useState({
     sliderStartPos: 0,
     sliderCurrentPos: 0
-  };
+  });
+  const { sliderStartPos, sliderCurrentPos } = state;
 
-  render() {
-    const handleTouchStart = (ev) => this.setState({
-      sliderStartPos: ev.touches[0].clientX,
-      sliderCurrentPos: ev.touches[0].clientX
-    });
+  const handleTouchStart = (ev) => setState({
+    sliderStartPos: ev.touches[0].clientX,
+    sliderCurrentPos: ev.touches[0].clientX
+  });
 
-    const handleTouchMove = (ev) => this.setState({
-      sliderCurrentPos: ev.touches[0].clientX
-    });
+  const handleTouchMove = (ev) => setState({
+    ...state,
+    sliderCurrentPos: ev.touches[0].clientX
+  });
 
-    const handleTouchEnd = () => this.state.sliderCurrentPos - this.state.sliderStartPos >= 220
-      ? this.props.onConfirm()
-      : this.setState({
+  const handleTouchEnd = () =>
+    sliderCurrentPos - sliderStartPos >= 220
+      ? onConfirm()
+      : setState({
         sliderStartPos: 0,
         sliderCurrentPos: 0
       });
 
-    return (
-      <SliderOutlineWrapper>
-        <Slider
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          startPos={this.state.sliderStartPos}
-          currentPos={this.state.sliderCurrentPos}
-        />
-      </SliderOutlineWrapper>
-    )
-  }
-}
+  return (
+    <SliderOutlineWrapper>
+      <Slider
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        startPos={sliderStartPos}
+        currentPos={sliderCurrentPos}
+      />
+    </SliderOutlineWrapper>
+  )
+};
 
 SliderContainer.propTypes = {
   onConfirm: PropTypes.func
